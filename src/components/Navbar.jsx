@@ -1,12 +1,13 @@
 import React from "react";
+import { FaBookmark, FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router";
 
 const Navbar = () => {
     const links= <>
        <li><NavLink className={({isActive})=>(isActive ? "bg-blue-500 underline text-white" : " ")} to="/">Home</NavLink></li>
        <li><NavLink className={({isActive})=>(isActive ? "bg-blue-500 underline text-white" : " ")} to="/about">About</NavLink></li>
-       <li><NavLink className={({isActive})=>(isActive ? "bg-blue-500 underline text-white" : " ")} to="/cart">cart</NavLink></li>
-       <li><NavLink className={({isActive})=>(isActive ? "bg-blue-500 underline text-white" : " ")} to="/favourite">Favourite</NavLink></li>
+       <li><NavLink className={({isActive})=>(isActive ? "bg-blue-500 underline text-white" : " ")} to="/cart"><FaShoppingCart size={25}></FaShoppingCart></NavLink></li>
+       <li><NavLink className={({isActive})=>(isActive ? "bg-blue-500 underline text-white" : " ")} to="/favourite"><FaBookmark size={25}></FaBookmark></NavLink></li>
     </>
   return (
     <div className="navbar bg-base-100 shadow-sm  mx-auto px-4 md:px-8 lg:px-16 xl:px-24">
