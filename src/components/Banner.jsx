@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import bannerImg from "../assets/banner.png";
 
-const Banner = () => {
+const Banner = ({handleSearch}) => {
+    const [searchText,setSearchText] = useState("")
+    // console.log(searchText);
+    
+    
   return (
     <div className="my-10 text-center">
       <img
@@ -15,8 +19,8 @@ const Banner = () => {
         phones <br />
         of the current time - FlagshipFaceOff
       </p>
-      <form className="flex flex-col md:flex-row items-center justify-center gap-1">
-        <input type="text" className="bg-white w-2/3 h-12 px-4 shadow-lg focus:border-none focus:outline rounded" placeholder="Search phone by name or brand" />
+      <form onSubmit={(e)=>handleSearch(e,searchText)} className="flex flex-col md:flex-row items-center justify-center gap-1">
+        <input type="text" value={searchText} onChange={e=>setSearchText(e.target.value)} className="bg-white w-2/3 h-12 px-4 shadow-lg focus:border-none focus:outline rounded" placeholder="Search phone by name or brand" />
         <button className="relative inline-block text-lg group">
           <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
             <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>

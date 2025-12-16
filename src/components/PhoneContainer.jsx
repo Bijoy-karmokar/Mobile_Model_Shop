@@ -1,24 +1,22 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router";
 import PhoneCard from "./PhoneCard";
 
-const PhoneContainer = () => {
-  const data = useLoaderData();
+const PhoneContainer = ({phones}) => {
   const [displayPhones, setDisplayPhones] = useState([]);
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     if (showAll) {
-      setDisplayPhones(data);
+      setDisplayPhones(phones);
     } else {
-      setDisplayPhones(data.slice(0, 6));
+      setDisplayPhones(phones.slice(0, 6));
     }
-  }, [showAll]);
+  }, [phones,showAll]);
 
   return (
     <div className="my-16">
-      <h3 className="text-3xl font-semibold">PhoneContainer:{data.length}</h3>
+      <h3 className="text-3xl font-semibold">PhoneContainer:{phones.length}</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-5">
         {displayPhones.map((phone) => (
           <PhoneCard key={phone.id} phones={phone}></PhoneCard>
