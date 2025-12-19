@@ -32,8 +32,9 @@ const router = createBrowserRouter([
                 Component:Favoutite
             },
             {
-                path:"/phone-details",
-                Component:PhoneDetails
+                path:"/phone-details/:id",
+                Component:PhoneDetails,
+                loader:()=>fetch("../phones.json")
             },
             {
                 path:'*',
