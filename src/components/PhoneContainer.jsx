@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import React, { useEffect, useState } from "react";
 import PhoneCard from "./PhoneCard";
+import Button from "../pages/Button";
 
 const PhoneContainer = ({phones}) => {
   const [displayPhones, setDisplayPhones] = useState([]);
@@ -22,7 +23,7 @@ const PhoneContainer = ({phones}) => {
           <PhoneCard key={phone.id} phones={phone}></PhoneCard>
         ))}
       </div>
-      <button onClick={()=>{
+      {/* <button onClick={()=>{
         setShowAll(!showAll)
         if(showAll) window.scrollTo(0,580)
       }} className="relative inline-block text-lg group">
@@ -35,7 +36,11 @@ const PhoneContainer = ({phones}) => {
           className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0"
           data-rounded="rounded-lg"
         ></span>
-      </button>
+      </button> */}
+      <Button type="submit" onClick={()=>{
+        setShowAll(!showAll)
+        if(showAll) window.scrollTo(0,580)
+      }} label={showAll ? "Show less" : "Show All"}></Button>
     </div>
   );
 };
