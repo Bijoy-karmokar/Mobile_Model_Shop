@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaBookmark, FaShoppingCart } from "react-icons/fa";
 import { NavLink } from "react-router";
+import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
+  const {cart} = useContext(AuthContext);
     const links= <>
        <li><NavLink className={({isActive})=>(isActive ? "bg-blue-500 underline text-white" : " ")} to="/">Home</NavLink></li>
        <li><NavLink className={({isActive})=>(isActive ? "bg-blue-500 underline text-white" : " ")} to="/about">About</NavLink></li>
-       <li><NavLink className={({isActive})=>(isActive ? "bg-blue-500 underline text-white" : " ")} to="/cart"><FaShoppingCart size={25}></FaShoppingCart></NavLink></li>
+       <li className="relative"><NavLink className={({isActive})=>(isActive ? "bg-blue-500 underline text-white" : " ")} to="/cart"><FaShoppingCart size={25}></FaShoppingCart><p>{cart.length}</p></NavLink></li>
        <li><NavLink className={({isActive})=>(isActive ? "bg-blue-500 underline text-white" : " ")} to="/favourite"><FaBookmark size={25}></FaBookmark></NavLink></li>
     </>
   return (

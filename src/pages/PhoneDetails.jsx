@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MdAddShoppingCart, MdBookmarkAdd } from "react-icons/md";
 import { useLoaderData, useParams } from "react-router";
 import Button from "./Button";
-import { addFavourite } from "../Utility";
+import { addCart, addFavourite, getCart } from "../Utility";
+import { AuthContext } from "../context/AuthContext";
 
 const PhoneDetails = () => {
+  const {setCart} = useContext(AuthContext);
   const data = useLoaderData();
   const { id } = useParams();
   // console.log(data,id);
@@ -24,6 +26,10 @@ const PhoneDetails = () => {
   const handleFavourite =()=>{
     addFavourite(singlePhone);
   }
+  const handleCart =()=>{
+    addCart(singlePhone);
+    setCart(getCart());
+  }
 
   return (
     <div className="py-10">
@@ -31,7 +37,7 @@ const PhoneDetails = () => {
       <div className="flex justify-between items-center mt-5">
         <p className="text-3xl md:text-5xl">{name}</p>
         <div className="flex gap-3">
-          <Button label={<MdAddShoppingCart size={20}></MdAddShoppingCart>}></Button>
+          <Button onClick={handleCart} label={<MdAddShoppingCart size={20}></MdAddShoppingCart>}></Button>
          <Button onClick={handleFavourite} label={<MdBookmarkAdd size={20}></MdBookmarkAdd>}></Button>
         </div>
       </div>

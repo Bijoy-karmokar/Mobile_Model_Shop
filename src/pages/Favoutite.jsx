@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { getFavourite, removeFavourite } from '../Utility';
 import PhoneCard from '../components/PhoneCard';
+import EmptyData from './EmptyData';
 
 const Favoutite = () => {
       const [displayPhones, setDisplayPhones] = useState([]);
@@ -15,6 +16,7 @@ const Favoutite = () => {
         removeFavourite(id);
         setDisplayPhones(getFavourite());
       }
+      if(displayPhones.length <1) return <EmptyData></EmptyData>
     return (
         <div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-5">
